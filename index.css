@@ -1,0 +1,450 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: auto;
+}
+
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #454545;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #000000;
+    border-radius: 40px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #000000;
+}
+
+
+.menu {
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    background-color: #000000;
+    z-index: 1000;
+}
+
+ul {
+    margin: 0 auto 0;
+    padding: 1em;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-around;
+    width: 600px;
+    text-align: center;
+}
+
+a {
+    color: #eee;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    display: block;
+    padding: 19% 0;
+    margin: 0 -20px;
+    position: relative;
+    cursor: pointer;
+}
+
+a:focus,
+a:hover {
+    color: #eee;
+}
+
+a:focus:after,
+a:hover:after {
+    width: 100%;
+    left: 0%;
+}
+
+a:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background-color: #fff;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+}
+
+.container {
+    display: flex;
+}
+
+.cv {
+    margin-top: 100px;
+    background-color: transparent;
+    height: 600px;
+    width: 50%;
+    display: flex;
+}
+
+.nombre {
+    position: relative;
+    color: #fff;
+    font-size: 3rem;
+    font-family: 'Press Start 2P', cursive;
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    transform: perspective(500px) rotatey(45deg);
+    animation: jump 2s infinite;
+}
+
+.nombre::after {
+    position: absolute;
+    top: 60%;
+    left: 0;
+    content: 'David Lopez';
+    transform: scaleY(-1);
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.2));
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: jumpingMirror 2s infinite;
+}
+
+.desc {
+    color: #fff;
+    font-size: 20px;
+    z-index: 2;
+    margin: 20%;
+}
+
+@keyframes jump {
+
+    0%,
+    40%,
+    100% {
+        transform: perspective(500px) rotateY(45deg) translateY(0);
+    }
+
+    20% {
+        transform: perspective(500px) rotateY(45deg) translateY(-20px);
+    }
+}
+
+@keyframes jumpingMirror {
+
+    0%,
+    40%,
+    100% {
+        transform: translateY(0) scaleY(-1);
+    }
+
+    20% {
+        transform: translateY(40px) scaleY(-1);
+    }
+}
+
+.aboutMe {
+    margin-top: 100px;
+    background-color: transparent;
+    height: 600px;
+    width: 50%;
+    display: grid;
+    align-content: center;
+}
+
+.tecnologias {
+    outline: solid gray;
+    background-color: #eee;
+    height: 600px;
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: 2;
+}
+
+h3 {
+    font-size: 40px;
+    color: #000;
+    align-self: center;
+}
+
+.logos {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.logos img {
+    width: 10%;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    mix-blend-mode: darken;
+    padding: 30px;
+}
+
+.proyectos {
+    padding-top: -50px;
+    outline: solid gray;
+    background-color: #eee;
+    height: 600px;
+    width: 96%;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#proyectos {
+    padding-bottom: 100px;
+    display: flex;
+}
+
+/*Cartas de proyectos -Inicio-*/
+
+.cards {
+    display: flex;
+    width: 100%;
+}
+
+.cardcontainer {
+    border-radius: .4rem;
+    background-color: #fff;
+    box-shadow: 0 3rem 6rem rgba(0, 0, 0, .1);
+    overflow: hidden;
+    cursor: pointer;
+    width: 300px;
+    height: 450px;
+    transition: .2s;
+    padding: .5rem;
+}
+
+.cardcontainer:hover {
+    transform: translateY(-.5%);
+    box-shadow: 0 4rem 8rem rgba(0, 0, 0, .2);
+}
+
+.cardimg {
+    display: block;
+    width: 100%;
+    height: 8rem;
+    object-fit: contain;
+}
+
+.cardcontent {
+    padding: 3rem 2rem;
+}
+
+.cardheader {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #0d0d0d;
+    margin-bottom: 1.5rem;
+}
+
+.cardtext {
+    font-size: 1rem;
+    letter-spacing: .05rem;
+    line-height: 1.7;
+    color: darken(#404040, 1%);
+    margin-bottom: 2.5rem;
+}
+
+.cardbtn {
+    display: flex;
+    font-size: 15px;
+    background: transparent;
+    border: none;
+    padding: 1rem;
+    color: #000000;
+    text-transform: uppercase;
+    position: relative;
+    transition: .5s ease;
+    cursor: pointer;
+}
+
+.cardbtn::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background-color: #000000;
+    transition: .5s ease;
+}
+
+.cardbtn:hover {
+    color: #ffffff;
+    transition-delay: .5s;
+}
+
+.cardbtn:hover::before {
+    width: 100%;
+}
+
+.cardbtn::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: #000000;
+    transition: .4s ease;
+    z-index: -1;
+}
+
+.cardbtn:hover::after {
+    height: 100%;
+    transition-delay: 0.2s;
+    color: aliceblue;
+}
+
+/* Cartas de proyectos -FIN- */
+
+/* Contacto -Inicio- */
+
+.contacto {
+    outline: solid #000000;
+    background-color: #000000;
+    height: 150px;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+}
+
+.iconsocial svg {
+    height: 25px;
+  }
+  
+  .iconsocial {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background: #e7e7e7;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    overflow: hidden;
+    height: 3rem;
+    width: 80%;
+  }
+  
+  .iconsocial::before, .iconsocial::after {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+    transition: 0.25s linear;
+    z-index: 1;
+  }
+  
+  .iconsocial::before {
+    content: "";
+    left: 0;
+    justify-content: flex-end;
+    background-color: #2d2d2d;
+  }
+  
+  .iconsocial::after {
+    content: "";
+    right: 0;
+    justify-content: flex-start;
+    background-color: rgb(82, 82, 82);
+  }
+  
+  .iconsocial:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+  
+  .iconsocial:hover span {
+    opacity: 0;
+    z-index: -3;
+  }
+  
+  .iconsocial:hover::before {
+    opacity: 0.5;
+    transform: translateY(-100%);
+  }
+  
+  .iconsocial:hover::after {
+    opacity: 0.5;
+    transform: translateY(100%);
+  }
+  
+  .iconsocial span {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    color: whitesmoke;
+    font-family: 'Fira Mono', monospace;
+    font-size: 24px;
+    font-weight: 700;
+    opacity: 1;
+    transition: opacity 0.25s;
+    z-index: 2;
+  }
+  
+  .iconsocial .social-link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    height: 100%;
+    color: whitesmoke;
+    font-size: 24px;
+    text-decoration: none;
+    transition: 0.25s;
+  }
+  
+  .iconsocial .social-link svg {
+    text-shadow: 1px 1px rgba(31, 74, 121, 0.7);
+    transform: scale(1);
+  }
+  
+  .iconsocial .social-link:hover {
+    background-color: rgba(249, 244, 255, 0.774);
+    animation: bounce_613 0.4s linear;
+  }
+  
+  @keyframes bounce_613 {
+    40% {
+      transform: scale(1.4);
+    }
+  
+    60% {
+      transform: scale(0.8);
+    }
+  
+    80% {
+      transform: scale(1.2);
+    }
+  
+    100% {
+      transform: scale(1);
+    }
+  }
+
+h2 {
+    font-size: 40px;
+    color: #fff;
+    z-index: 2;
+}
