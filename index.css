@@ -46,7 +46,7 @@ ul {
     text-align: center;
 }
 
-a {
+.bn {
     color: #eee;
     text-transform: uppercase;
     text-decoration: none;
@@ -58,18 +58,18 @@ a {
     cursor: pointer;
 }
 
-a:focus,
-a:hover {
+.bn:focus,
+.bn:hover {
     color: #eee;
 }
 
-a:focus:after,
-a:hover:after {
+.bn:focus:after,
+.bn:hover:after {
     width: 100%;
     left: 0%;
 }
 
-a:after {
+.bn:after {
     content: "";
     pointer-events: none;
     bottom: -2px;
@@ -262,6 +262,7 @@ h3 {
 }
 
 .cardbtn {
+    text-decoration: none;
     display: flex;
     font-size: 15px;
     background: transparent;
