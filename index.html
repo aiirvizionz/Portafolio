@@ -5,35 +5,56 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>David Lopez</title>
+    <title>DL | Portafolio</title>
     <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="img/DL.png">
 </head>
 
 <body>
-    <div class="menu">
+
+    <div class="menu-exit" id="div-menu-exit">
+        <label class="hamburger" for="cb-menu">
+            <input type="checkbox" id="cb-menu">
+            <svg viewBox="0 0 32 32">
+                <path class="line line-top-bottom"
+                    d="M27 10 13 10C10.8 10 9 8.2 9 6 9 3.5 10.8 2 13 2 15.2 2 17 3.8 17 6L17 26C17 28.2 18.8 30 21 30 23.2 30 25 28.2 25 26 25 23.8 23.2 22 21 22L7 22">
+                </path>
+                <path class="line" d="M7 16 27 16"></path>
+            </svg>
+        </label>
+    </div>
+
+
+    <nav id="menu">
         <ul>
             <li><a href="#aboutMe" class="bn">Sobre mi</a></li>
             <li><a href="#tecnologias" class="bn">Tecnologias</a></li>
             <li><a href="#proyectos" class="bn">Proyectos</a></li>
             <li><a href="#contacto" class="bn">Contacto</a></li>
         </ul>
-    </div>
+    </nav>
     <section>
         <div id='grained'></div>
         <section class="container" id="aboutMe">
-            <div class="cv">
+            <div class="div-name">
                 <p class="nombre">David Lopez</p>
+                <div class="code-loader">
+                    <span>{</span><span>}</span>
+                </div>
             </div>
             <div class="aboutMe">
-                <h2>Desarrollador Web</h2>
-                <p class="desc"><b>Estudiante de Ingeniería Administración de Sistemas, una persona apasionada por la
+                <h2 class="escribiendo_efecto">Hola, soy un Desarrollador Web.</h2>
+                <p class="desc"><b>Estudiante de Ingeniería en Sistemas, una persona apasionada por la
                         tecnología y programación, en busca de nuevos retos y gusto por aprender acerca del area</b></p>
+                        <a href="data/CV DAVID LOPEZ 2023 FEB.pdf" download="CV DL" class="btncv">Descargar CV </a>
             </div>
         </section>
         <section class="container" id="tecnologias">
             <div class="tecnologias">
                 <div class="subtitulo">
-                    <h3>Tecnologias</h3>
+                    <h3 id="llave1">&lt; </h3>
+                    <h3> Tecnologias </h3>
+                    <h3 id="llave2"> /&gt;</h3>
                 </div>
                 <div class="logos">
                     <img src="./img/html5logo.png" alt="HTML5">
@@ -47,7 +68,7 @@
                     <img src="./img/gitlogo.png" alt="HTML5">
                     <img src="./img/mysqllogo.png" alt="HTML5">
                     <img src="./img/mongologo.png" alt="HTML5">
-                    <img src="./img/vb.netlogo.jpg" alt="HTML5">
+                    <img src="./img/vbnetlogo.jpg" alt="HTML5">
                     <img src="./img/accesslogo.png" alt="HTML5">
                     <img src="./img/azurelogo.png" alt="HTML5">
                 </div>
@@ -55,7 +76,11 @@
         </section>
         <section class="container" id="proyectos">
             <div class="proyectos">
-                <h3>Proyectos</h3>
+                <div class="subtitulo">
+                    <h3 id="llave1">&lt; </h3>
+                    <h3>Proyectos</h3>
+                    <h3 id="llave2"> /&gt;</h3>
+                </div>
                 <div class="cards">
                     <div class="cardcontainer">
                         <div class="card">
@@ -65,7 +90,8 @@
                                 <p class="cardtext">Pagina estatica sobre vacunas hecha usando unicamente
                                     <strong>HTML y CSS</strong>
                                 </p>
-                                <a href="https://vacunnation-dalh.netlify.app/" target="_blank" class="cardbtn"><strong>Ir al proyecto
+                                <a href="https://vacunnation-dalh.netlify.app/" target="_blank"
+                                    class="cardbtn"><strong>Ir al proyecto
                                         <span>&rarr;</span></strong></a>
                             </div>
                         </div>
@@ -77,7 +103,8 @@
                                 <h4 class="cardheader">Calculadora en JavaScript</h4>
                                 <p class="cardtext">Calculadora hecha usando <strong>HTML, CSS y JavaScript
                                         puro</strong></p>
-                                <a href="https://aiirvizionz.github.io/CalculadoraJS/" target="_blank" class="cardbtn" ><strong>Ir al proyecto
+                                <a href="https://aiirvizionz.github.io/CalculadoraJS/" target="_blank"
+                                    class="cardbtn"><strong>Ir al proyecto
                                         <span>&rarr;</span></strong></a>
                             </div>
                         </div>
@@ -116,7 +143,8 @@
                                 d="M17.791,46.836C18.502,46.53,19,45.823,19,45v-5.4c0-0.197,0.016-0.402,0.041-0.61C19.027,38.994,19.014,38.997,19,39 c0,0-3,0-3.6,0c-1.5,0-2.8-0.6-3.4-1.8c-0.7-1.3-1-3.5-2.8-4.7C8.9,32.3,9.1,32,9.7,32c0.6,0.1,1.9,0.9,2.7,2c0.9,1.1,1.8,2,3.4,2 c2.487,0,3.82-0.125,4.622-0.555C21.356,34.056,22.649,33,24,33v-0.025c-5.668-0.182-9.289-2.066-10.975-4.975 c-3.665,0.042-6.856,0.405-8.677,0.707c-0.058-0.327-0.108-0.656-0.151-0.987c1.797-0.296,4.843-0.647,8.345-0.714 c-0.112-0.276-0.209-0.559-0.291-0.849c-3.511-0.178-6.541-0.039-8.187,0.097c-0.02-0.332-0.047-0.663-0.051-0.999 c1.649-0.135,4.597-0.27,8.018-0.111c-0.079-0.5-0.13-1.011-0.13-1.543c0-1.7,0.6-3.5,1.7-5c-0.5-1.7-1.2-5.3,0.2-6.6 c2.7,0,4.6,1.3,5.5,2.1C21,13.4,22.9,13,25,13s4,0.4,5.6,1.1c0.9-0.8,2.8-2.1,5.5-2.1c1.5,1.4,0.7,5,0.2,6.6c1.1,1.5,1.7,3.2,1.6,5 c0,0.484-0.045,0.951-0.11,1.409c3.499-0.172,6.527-0.034,8.204,0.102c-0.002,0.337-0.033,0.666-0.051,0.999 c-1.671-0.138-4.775-0.28-8.359-0.089c-0.089,0.336-0.197,0.663-0.325,0.98c3.546,0.046,6.665,0.389,8.548,0.689 c-0.043,0.332-0.093,0.661-0.151,0.987c-1.912-0.306-5.171-0.664-8.879-0.682C35.112,30.873,31.557,32.75,26,32.969V33 c2.6,0,5,3.9,5,6.6V45c0,0.823,0.498,1.53,1.209,1.836C41.37,43.804,48,35.164,48,25C48,12.318,37.683,2,25,2S2,12.318,2,25 C2,35.164,8.63,43.804,17.791,46.836z">
                             </path>
                         </svg> </a>
-                    <a class="social-link" href="https://wa.me/528186052421?text=Hola,%20he%20visto%20tu%20portafolio%20y%20estoy%20interesado" target="_blank">
+                    <a class="social-link" href="https://wa.me/528186052421?text=Hola,%20he%20visto%20tu%20portafolio"
+                        target="_blank">
                         <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48"
                             viewBox="0 0 48 48">
                             <path fill="#fff"
