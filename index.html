@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,6 +7,13 @@
     <meta name="description" content="Portafolio de David Lopez, estudiante de Ingeniería en Sistemas y desarrollador de software junior enfocado en desarrollo web, IA aplicada, APIs y automatización.">
     <meta name="theme-color" content="#050505">
     <title>David Lopez | Portafolio</title>
+    <script>
+        try {
+            const savedTheme = localStorage.getItem('portfolio-theme');
+            const preferredTheme = savedTheme || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+            document.documentElement.dataset.theme = preferredTheme;
+        } catch (_) {}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -21,6 +28,259 @@
             white-space: nowrap;
             padding-right: 0.06em;
         }
+
+        /* Controles de idioma y apariencia */
+        .header-right,
+        .preference-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .header-right {
+            gap: 22px;
+        }
+
+        .preference-controls {
+            gap: 8px;
+        }
+
+        .preference-switch {
+            position: relative;
+            height: 36px;
+            border: 1px solid var(--line-strong);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--text);
+            font-family: var(--mono);
+            cursor: pointer;
+            transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+        }
+
+        .preference-switch:hover {
+            border-color: rgba(103, 232, 249, 0.55);
+        }
+
+        .preference-switch:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+        }
+
+        .language-switch {
+            width: 72px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 3px;
+            overflow: hidden;
+        }
+
+        .language-switch .switch-label {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            font-size: 0.62rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+            transition: color 180ms ease;
+        }
+
+        .language-switch .switch-thumb {
+            position: absolute;
+            z-index: 1;
+            top: 3px;
+            left: 3px;
+            width: 31px;
+            height: 28px;
+            border-radius: 999px;
+            background: var(--text);
+            transition: transform 220ms ease, background 180ms ease;
+        }
+
+        .language-switch[aria-checked="false"] .switch-label:first-of-type,
+        .language-switch[aria-checked="true"] .switch-label:last-of-type {
+            color: var(--bg);
+        }
+
+        .language-switch[aria-checked="true"] .switch-thumb {
+            transform: translateX(34px);
+        }
+
+        .theme-switch {
+            width: 58px;
+            padding: 3px;
+        }
+
+        .theme-switch .switch-icon {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 23px;
+            text-align: center;
+            font-size: 0.76rem;
+            line-height: 1;
+            transition: color 180ms ease;
+        }
+
+        .theme-switch .sun { left: 4px; }
+        .theme-switch .moon { right: 4px; }
+
+        .theme-switch .switch-thumb {
+            position: absolute;
+            z-index: 1;
+            top: 3px;
+            left: 3px;
+            width: 25px;
+            height: 28px;
+            border-radius: 999px;
+            background: var(--text);
+            transition: transform 220ms ease, background 180ms ease;
+        }
+
+        .theme-switch[aria-checked="true"] .switch-thumb {
+            transform: translateX(27px);
+        }
+
+        .theme-switch[aria-checked="false"] .moon,
+        .theme-switch[aria-checked="true"] .sun {
+            color: var(--bg);
+        }
+
+        /* Tema claro: conserva el lenguaje visual técnico con una paleta tipo papel */
+        html[data-theme="light"] {
+            --bg: #f4f4f1;
+            --surface: #ffffff;
+            --surface-2: #ecece8;
+            --text: #151617;
+            --muted: #5d6066;
+            --subtle: #777a80;
+            --line: rgba(15, 18, 20, 0.12);
+            --line-strong: rgba(15, 18, 20, 0.22);
+            --accent: #087f8c;
+            --accent-soft: rgba(8, 127, 140, 0.09);
+            color-scheme: light;
+        }
+
+        html[data-theme="dark"] {
+            color-scheme: dark;
+        }
+
+        html[data-theme="light"] body::before {
+            background: rgba(8, 127, 140, 0.08);
+        }
+
+        html[data-theme="light"] .ambient-grid {
+            opacity: 0.25;
+            background-image:
+                linear-gradient(rgba(10, 10, 10, 0.045) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(10, 10, 10, 0.045) 1px, transparent 1px);
+        }
+
+        html[data-theme="light"] .site-header {
+            background: rgba(244, 244, 241, 0.82);
+            border-bottom-color: rgba(15, 18, 20, 0.09);
+        }
+
+        html[data-theme="light"] .site-nav a,
+        html[data-theme="light"] .hero-role,
+        html[data-theme="light"] .button-secondary,
+        html[data-theme="light"] .project-links a,
+        html[data-theme="light"] .contact-links a,
+        html[data-theme="light"] .site-footer a {
+            color: var(--text);
+        }
+
+        html[data-theme="light"] .site-nav a:hover,
+        html[data-theme="light"] .site-nav a.active {
+            color: #000;
+        }
+
+        html[data-theme="light"] .menu-toggle span {
+            background: var(--text);
+        }
+
+        html[data-theme="light"] .hero h1 span {
+            -webkit-text-stroke-color: rgba(21, 22, 23, 0.7);
+        }
+
+        html[data-theme="light"] .button-primary {
+            color: #fff;
+        }
+
+        html[data-theme="light"] .button-primary:hover {
+            color: #fff;
+        }
+
+        html[data-theme="light"] .terminal-card,
+        html[data-theme="light"] .stack-card,
+        html[data-theme="light"] .project-card,
+        html[data-theme="light"] .contact-panel {
+            background: linear-gradient(150deg, rgba(255,255,255,.92), rgba(236,236,232,.76));
+            box-shadow: none;
+        }
+
+        html[data-theme="light"] .project-featured {
+            background:
+                radial-gradient(circle at 90% 10%, rgba(8, 127, 140, .11), transparent 28%),
+                linear-gradient(150deg, rgba(255,255,255,.96), rgba(236,236,232,.78));
+        }
+
+        html[data-theme="light"] .terminal-card pre,
+        html[data-theme="light"] .about-copy,
+        html[data-theme="light"] .tag-row span,
+        html[data-theme="light"] .stack-tags span {
+            color: var(--text);
+        }
+
+        html[data-theme="light"] .terminal-dots i {
+            background: #b2b4b8;
+        }
+
+        html[data-theme="light"] .code-key { color: #6d28d9; }
+        html[data-theme="light"] .code-string { color: #047857; }
+        html[data-theme="light"] .code-boolean { color: #087f8c; }
+        html[data-theme="light"] .code-muted { color: #777a80; }
+
+        html[data-theme="light"] .tag-row span,
+        html[data-theme="light"] .stack-tags span {
+            background: rgba(15, 18, 20, 0.025);
+        }
+
+        html[data-theme="light"] .contact-panel::after {
+            color: rgba(15, 18, 20, 0.035);
+        }
+
+        html[data-theme="light"] .timeline-marker {
+            background: var(--bg);
+        }
+
+        @media (max-width: 980px) {
+            .header-right { gap: 12px; }
+            .site-nav { gap: 18px; }
+        }
+
+        @media (max-width: 760px) {
+            .header-right { gap: 8px; }
+            .preference-controls { gap: 6px; }
+            .language-switch { width: 66px; }
+            .language-switch .switch-thumb { width: 28px; }
+            .language-switch[aria-checked="true"] .switch-thumb { transform: translateX(31px); }
+            .theme-switch { width: 52px; }
+            .theme-switch .switch-thumb { width: 22px; }
+            .theme-switch[aria-checked="true"] .switch-thumb { transform: translateX(24px); }
+
+            html[data-theme="light"] .site-nav {
+                background: rgba(244, 244, 241, .98);
+            }
+        }
+
+        @media (max-width: 390px) {
+            .preference-controls { gap: 4px; }
+            .language-switch { width: 62px; }
+            .language-switch[aria-checked="true"] .switch-thumb { transform: translateX(27px); }
+            .theme-switch { width: 48px; }
+            .theme-switch[aria-checked="true"] .switch-thumb { transform: translateX(20px); }
+        }
     </style>
     <link rel="shortcut icon" href="img/DL.png">
 </head>
@@ -28,24 +288,39 @@
     <div class="ambient-grid" aria-hidden="true"></div>
 
     <header class="site-header">
-        <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <a class="brand" href="#inicio" aria-label="Ir al inicio" data-i18n-aria="brandAria">
             <span class="brand-bracket">{</span>
             <span>DL</span>
             <span class="brand-bracket">}</span>
         </a>
 
-        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-        </button>
+        <div class="header-right">
+            <nav id="menu" class="site-nav" aria-label="Navegación principal" data-i18n-aria="navAria">
+                <a href="#sobre-mi" data-i18n="navAbout">Sobre mí</a>
+                <a href="#experiencia" data-i18n="navExperience">Experiencia</a>
+                <a href="#tecnologias" data-i18n="navTech">Tecnologías</a>
+                <a href="#proyectos" data-i18n="navProjects">Proyectos</a>
+                <a href="#contacto" data-i18n="navContact">Contacto</a>
+            </nav>
 
-        <nav id="menu" class="site-nav" aria-label="Navegación principal">
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#experiencia">Experiencia</a>
-            <a href="#tecnologias">Tecnologías</a>
-            <a href="#proyectos">Proyectos</a>
-            <a href="#contacto">Contacto</a>
-        </nav>
+            <div class="preference-controls" aria-label="Preferencias" data-i18n-aria="preferencesAria">
+                <button class="preference-switch language-switch" id="language-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar idioma a inglés">
+                    <span class="switch-thumb" aria-hidden="true"></span>
+                    <span class="switch-label">ES</span>
+                    <span class="switch-label">EN</span>
+                </button>
+                <button class="preference-switch theme-switch" id="theme-toggle" type="button" role="switch" aria-checked="false" aria-label="Cambiar a modo claro">
+                    <span class="switch-thumb" aria-hidden="true"></span>
+                    <span class="switch-icon sun" aria-hidden="true">☀</span>
+                    <span class="switch-icon moon" aria-hidden="true">☾</span>
+                </button>
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
     </header>
 
     <main>
@@ -53,72 +328,69 @@
             <div class="hero-copy reveal">
                 <p class="eyebrow"><span class="prompt">~/portfolio</span> <span class="cursor">_</span></p>
                 <h1>David<br><span>Lopez.</span></h1>
-                <p class="hero-role">Estudiante de Ingeniería en Sistemas · Junior Software Developer</p>
-                <p class="hero-description">
-                    Desarrollo software y experiencias web con interés en inteligencia artificial aplicada,
-                    automatización, APIs y datos. Me gusta convertir problemas reales en productos funcionales,
-                    iterar sobre ellos y aprender construyendo.
+                <p class="hero-role" data-i18n="heroRole">Estudiante de Ingeniería en Sistemas · Junior Software Developer</p>
+                <p class="hero-description" data-i18n="heroDescription">
+                    Desarrollo software y experiencias web con interés en inteligencia artificial aplicada, automatización, APIs y datos. Me gusta convertir problemas reales en productos funcionales, iterar sobre ellos y aprender construyendo.
                 </p>
 
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#proyectos">Ver proyectos <span aria-hidden="true">↘</span></a>
+                    <a class="button button-primary" href="#proyectos" data-i18n="viewProjects">Ver proyectos ↘</a>
                     <a class="button button-secondary" href="https://github.com/aiirvizionz" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
                 </div>
 
-                <div class="hero-meta" aria-label="Información rápida">
-                    <span>Monterrey, México</span>
+                <div class="hero-meta" aria-label="Información rápida" data-i18n-aria="quickInfoAria">
+                    <span data-i18n="location">Monterrey, México</span>
                     <span>FIME · UANL</span>
-                    <span>Software · IA · Web</span>
+                    <span data-i18n="focusMeta">Software · IA · Web</span>
                 </div>
             </div>
 
-            <aside class="terminal-card reveal" aria-label="Resumen profesional">
+            <aside class="terminal-card reveal" aria-label="Resumen profesional" data-i18n-aria="profileSummaryAria">
                 <div class="terminal-topbar">
                     <div class="terminal-dots" aria-hidden="true"><i></i><i></i><i></i></div>
                     <span>profile.json</span>
                 </div>
                 <pre><code><span class="code-muted">{</span>
-  <span class="code-key">"name"</span>: <span class="code-string">"David Lopez"</span>,
-  <span class="code-key">"role"</span>: <span class="code-string">"Junior Software Developer"</span>,
-  <span class="code-key">"focus"</span>: [
-    <span class="code-string">"Software Development"</span>,
-    <span class="code-string">"Applied AI"</span>,
-    <span class="code-string">"APIs & Automation"</span>
+  <span class="code-key">"<span data-i18n="codeNameKey">nombre</span>"</span>: <span class="code-string">"David Lopez"</span>,
+  <span class="code-key">"<span data-i18n="codeRoleKey">rol</span>"</span>: <span class="code-string">"<span data-i18n="codeRoleValue">Desarrollador de Software Junior</span>"</span>,
+  <span class="code-key">"<span data-i18n="codeFocusKey">enfoque</span>"</span>: [
+    <span class="code-string">"<span data-i18n="codeFocusSoftware">Desarrollo de Software</span>"</span>,
+    <span class="code-string">"<span data-i18n="codeFocusAI">IA Aplicada</span>"</span>,
+    <span class="code-string">"<span data-i18n="codeFocusApi">APIs y Automatización</span>"</span>
   ],
-  <span class="code-key">"learning"</span>: <span class="code-boolean">true</span>
+  <span class="code-key">"<span data-i18n="codeLearningKey">aprendiendo</span>"</span>: <span class="code-boolean">true</span>
 <span class="code-muted">}</span></code></pre>
             </aside>
         </section>
 
         <section class="section-shell section-block" id="sobre-mi">
             <div class="section-heading reveal">
-                <p class="section-index">01 / SOBRE MÍ</p>
-                <h2>&lt; Construyendo una base técnica amplia /&gt;</h2>
+                <p class="section-index" data-i18n="aboutIndex">01 / SOBRE MÍ</p>
+                <h2 data-i18n="aboutHeading">&lt; Construyendo una base técnica amplia /&gt;</h2>
             </div>
 
             <div class="about-grid">
                 <div class="about-copy reveal">
-                    <p>
-                        Soy estudiante de Ingeniería en Sistemas en la <strong>Facultad de Ingeniería Mecánica y Eléctrica de la UANL</strong>.
-                        Mi formación combina programación, bases de datos, redes, soporte de TI y desarrollo de soluciones que integran servicios externos e inteligencia artificial.
+                    <p data-i18n-html="aboutP1">
+                        Soy estudiante de Ingeniería en Sistemas en la <strong>Facultad de Ingeniería Mecánica y Eléctrica de la UANL</strong>. Mi formación combina programación, bases de datos, redes, soporte de TI y desarrollo de soluciones que integran servicios externos e inteligencia artificial.
                     </p>
-                    <p>
+                    <p data-i18n="aboutP2">
                         Mi objetivo profesional es seguir creciendo como desarrollador de software, fortaleciendo backend, arquitectura de aplicaciones e IA aplicada sin perder el enfoque en interfaces claras y productos útiles.
                     </p>
                 </div>
 
                 <div class="focus-list reveal">
-                    <article><span>01</span><div><h3>Desarrollo de software</h3><p>Aplicaciones web, lógica de negocio, integración de APIs y solución de problemas.</p></div></article>
-                    <article><span>02</span><div><h3>IA aplicada</h3><p>Prototipos con modelos neuronales, visión por computadora y servicios de IA multimodal.</p></div></article>
-                    <article><span>03</span><div><h3>Infraestructura y soporte</h3><p>Diagnóstico técnico, seguimiento de incidencias, hardware y continuidad operativa.</p></div></article>
+                    <article><span>01</span><div><h3 data-i18n="focusSoftwareTitle">Desarrollo de software</h3><p data-i18n="focusSoftwareText">Aplicaciones web, lógica de negocio, integración de APIs y solución de problemas.</p></div></article>
+                    <article><span>02</span><div><h3 data-i18n="focusAiTitle">IA aplicada</h3><p data-i18n="focusAiText">Prototipos con modelos neuronales, visión por computadora y servicios de IA multimodal.</p></div></article>
+                    <article><span>03</span><div><h3 data-i18n="focusSupportTitle">Infraestructura y soporte</h3><p data-i18n="focusSupportText">Diagnóstico técnico, seguimiento de incidencias, hardware y continuidad operativa.</p></div></article>
                 </div>
             </div>
         </section>
 
         <section class="section-shell section-block" id="experiencia">
             <div class="section-heading reveal">
-                <p class="section-index">02 / EXPERIENCIA</p>
-                <h2>&lt; Experiencia profesional /&gt;</h2>
+                <p class="section-index" data-i18n="experienceIndex">02 / EXPERIENCIA</p>
+                <h2 data-i18n="experienceHeading">&lt; Experiencia profesional /&gt;</h2>
             </div>
 
             <div class="timeline">
@@ -127,13 +399,12 @@
                     <div class="timeline-header">
                         <div>
                             <p class="timeline-company">Grupo Financiero Banorte</p>
-                            <h3>Analista de Soporte para TI</h3>
+                            <h3 data-i18n="itRole">Analista de Soporte para TI</h3>
                         </div>
                         <span class="timeline-date">2025</span>
                     </div>
-                    <p>
-                        Diagnóstico técnico y validación física de hardware en equipos corporativos, soporte de primer nivel,
-                        gestión y seguimiento de incidencias mediante tickets y apoyo en consultas SQL para la atención de requerimientos.
+                    <p data-i18n="itDescription">
+                        Diagnóstico técnico y validación física de hardware en equipos corporativos, soporte de primer nivel, gestión y seguimiento de incidencias mediante tickets y apoyo en consultas SQL para la atención de requerimientos.
                     </p>
                     <div class="tag-row"><span>IT Support</span><span>Tickets</span><span>Hardware</span><span>SQL</span><span>SLA</span></div>
                 </article>
@@ -143,15 +414,14 @@
                     <div class="timeline-header">
                         <div>
                             <p class="timeline-company">Grupo Financiero Banorte</p>
-                            <h3>Ejecutivo de Servicio al Cliente</h3>
+                            <h3 data-i18n="customerRole">Ejecutivo de Servicio al Cliente</h3>
                         </div>
                         <span class="timeline-date">2024 — 2026</span>
                     </div>
-                    <p>
-                        Atención y seguimiento de solicitudes de clientes, resolución de incidencias dentro de procesos establecidos
-                        y desarrollo de habilidades de comunicación, análisis y manejo de situaciones bajo presión.
+                    <p data-i18n="customerDescription">
+                        Atención y seguimiento de solicitudes de clientes, resolución de incidencias dentro de procesos establecidos y desarrollo de habilidades de comunicación, análisis y manejo de situaciones bajo presión.
                     </p>
-                    <div class="tag-row"><span>Customer Support</span><span>Seguimiento</span><span>Comunicación</span><span>Resolución</span></div>
+                    <div class="tag-row"><span>Customer Support</span><span data-i18n="tagFollowUp">Seguimiento</span><span data-i18n="tagCommunication">Comunicación</span><span data-i18n="tagResolution">Resolución</span></div>
                 </article>
             </div>
         </section>
@@ -159,13 +429,13 @@
         <section class="section-shell section-block" id="tecnologias">
             <div class="section-heading reveal">
                 <p class="section-index">03 / STACK</p>
-                <h2>&lt; Tecnologías y herramientas /&gt;</h2>
-                <p class="section-lead">Tecnologías que he utilizado en proyectos académicos, personales y experiencia práctica.</p>
+                <h2 data-i18n="techHeading">&lt; Tecnologías y herramientas /&gt;</h2>
+                <p class="section-lead" data-i18n="techLead">Tecnologías que he utilizado en proyectos académicos, personales y experiencia práctica.</p>
             </div>
 
             <div class="stack-grid">
                 <article class="stack-card reveal">
-                    <p class="stack-label">01 · Lenguajes</p>
+                    <p class="stack-label" data-i18n="stackLanguages">01 · Lenguajes</p>
                     <div class="stack-tags"><span>Python</span><span>Java</span><span>JavaScript</span><span>HTML5</span><span>CSS3</span><span>SQL</span><span>Visual Basic .NET</span></div>
                 </article>
                 <article class="stack-card reveal">
@@ -173,11 +443,11 @@
                     <div class="stack-tags"><span>Node.js</span><span>Express</span><span>React</span><span>Spring</span><span>SASS</span><span>Socket.io</span><span>REST APIs</span></div>
                 </article>
                 <article class="stack-card reveal">
-                    <p class="stack-label">03 · IA & Datos</p>
+                    <p class="stack-label" data-i18n="stackAiData">03 · IA & Datos</p>
                     <div class="stack-tags"><span>TensorFlow</span><span>Keras</span><span>MediaPipe</span><span>OpenCV</span><span>NumPy</span><span>Pandas</span><span>scikit-learn</span><span>Gemini API</span></div>
                 </article>
                 <article class="stack-card reveal">
-                    <p class="stack-label">04 · Datos & Herramientas</p>
+                    <p class="stack-label" data-i18n="stackDataTools">04 · Datos & Herramientas</p>
                     <div class="stack-tags"><span>MySQL</span><span>MongoDB</span><span>Microsoft Access</span><span>Git</span><span>GitHub</span><span>Azure</span><span>Render</span><span>npm</span></div>
                 </article>
             </div>
@@ -185,25 +455,24 @@
 
         <section class="section-shell section-block" id="proyectos">
             <div class="section-heading reveal">
-                <p class="section-index">04 / PROYECTOS</p>
-                <h2>&lt; Trabajo destacado /&gt;</h2>
-                <p class="section-lead">Una selección de proyectos que muestran mejor mi evolución técnica actual.</p>
+                <p class="section-index" data-i18n="projectsIndex">04 / PROYECTOS</p>
+                <h2 data-i18n="projectsHeading">&lt; Trabajo destacado /&gt;</h2>
+                <p class="section-lead" data-i18n="projectsLead">Una selección de proyectos que muestran mejor mi evolución técnica actual.</p>
             </div>
 
             <div class="projects-grid">
                 <article class="project-card project-featured reveal">
                     <div class="project-number">01</div>
                     <div class="project-content">
-                        <p class="project-kicker">AI · APIs · PRODUCT</p>
+                        <p class="project-kicker" data-i18n="calendarKicker">IA · APIs · PRODUCTO</p>
                         <h3>CalendarIA</h3>
-                        <p>
-                            Aplicación web de agenda inteligente que transforma texto, imágenes y voz en propuestas de eventos revisables.
-                            Integra Gemini con Google Calendar mediante OAuth 2.0 + PKCE y mantiene al usuario en control antes de crear cada evento.
+                        <p data-i18n="calendarDescription">
+                            Aplicación web de agenda inteligente que transforma texto, imágenes y voz en propuestas de eventos revisables. Integra Gemini con Google Calendar mediante OAuth 2.0 + PKCE y mantiene al usuario en control antes de crear cada evento.
                         </p>
                         <div class="tag-row"><span>Node.js</span><span>Express</span><span>Gemini</span><span>Google Calendar API</span><span>OAuth 2.0</span></div>
                         <div class="project-links">
                             <a href="https://calendaria.onrender.com/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-                            <a href="https://github.com/aiirvizionz/CalendarIA" target="_blank" rel="noopener noreferrer">Código ↗</a>
+                            <a href="https://github.com/aiirvizionz/CalendarIA" target="_blank" rel="noopener noreferrer" data-i18n="codeLink">Código ↗</a>
                         </div>
                     </div>
                 </article>
@@ -211,15 +480,14 @@
                 <article class="project-card reveal">
                     <div class="project-number">02</div>
                     <div class="project-content">
-                        <p class="project-kicker">DEEP LEARNING · COMPUTER VISION</p>
-                        <h3>Traductor de Lengua de Señas Mexicana</h3>
-                        <p>
-                            Proyecto académico de traducción en tiempo real mediante cámara web, con alcance enfocado en un abecedario básico y un conjunto de palabras comunes.
-                            Combina una red densa para señas estáticas y una LSTM para letras y palabras con movimiento, utilizando landmarks de mano y procesamiento de video.
+                        <p class="project-kicker" data-i18n="lsmKicker">APRENDIZAJE PROFUNDO · VISIÓN POR COMPUTADORA</p>
+                        <h3 data-i18n="lsmTitle">Traductor de Lengua de Señas Mexicana</h3>
+                        <p data-i18n="lsmDescription">
+                            Proyecto académico de traducción en tiempo real mediante cámara web, con alcance enfocado en un abecedario básico y un conjunto de palabras comunes. Combina una red densa para señas estáticas y una LSTM para letras y palabras con movimiento, utilizando landmarks de mano y procesamiento de video.
                         </p>
                         <div class="tag-row"><span>Python</span><span>TensorFlow</span><span>Keras</span><span>MediaPipe</span><span>OpenCV</span></div>
                         <div class="project-links">
-                            <a href="https://github.com/aiirvizionz/Traductor-de-LDSM" target="_blank" rel="noopener noreferrer">Código ↗</a>
+                            <a href="https://github.com/aiirvizionz/Traductor-de-LDSM" target="_blank" rel="noopener noreferrer" data-i18n="codeLink">Código ↗</a>
                         </div>
                     </div>
                 </article>
@@ -227,15 +495,14 @@
                 <article class="project-card reveal">
                     <div class="project-number">03</div>
                     <div class="project-content">
-                        <p class="project-kicker">ALGORITHMS · OPTIMIZATION</p>
+                        <p class="project-kicker" data-i18n="binKicker">ALGORITMOS · OPTIMIZACIÓN</p>
                         <h3>Bin Packing Problem</h3>
-                        <p>
-                            Aplicación interactiva en navegador para explorar el problema de optimización Bin Packing,
-                            desarrollada sin framework y enfocada en manipulación del DOM, interacción visual y lógica algorítmica.
+                        <p data-i18n="binDescription">
+                            Aplicación interactiva en navegador para explorar el problema de optimización Bin Packing, desarrollada sin framework y enfocada en manipulación del DOM, interacción visual y lógica algorítmica.
                         </p>
                         <div class="tag-row"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>DOM</span><span>Drag & Drop</span></div>
                         <div class="project-links">
-                            <a href="https://github.com/aiirvizionz/Bin-Packing-Problem" target="_blank" rel="noopener noreferrer">Código ↗</a>
+                            <a href="https://github.com/aiirvizionz/Bin-Packing-Problem" target="_blank" rel="noopener noreferrer" data-i18n="codeLink">Código ↗</a>
                         </div>
                     </div>
                 </article>
@@ -245,31 +512,29 @@
                     <div class="project-content">
                         <p class="project-kicker">WEB · API</p>
                         <h3>Weathery</h3>
-                        <p>
-                            Aplicación web para consultar información meteorológica mediante OpenWeatherMap, uno de mis primeros proyectos
-                            consumiendo una API externa desde JavaScript.
+                        <p data-i18n="weatherDescription">
+                            Aplicación web para consultar información meteorológica mediante OpenWeatherMap, uno de mis primeros proyectos consumiendo una API externa desde JavaScript.
                         </p>
                         <div class="tag-row"><span>JavaScript</span><span>HTML</span><span>CSS</span><span>OpenWeatherMap API</span></div>
                         <div class="project-links">
                             <a href="https://aiirvizionz.github.io/Weathery/" target="_blank" rel="noopener noreferrer">Demo ↗</a>
-                            <a href="https://github.com/aiirvizionz/Weathery" target="_blank" rel="noopener noreferrer">Código ↗</a>
+                            <a href="https://github.com/aiirvizionz/Weathery" target="_blank" rel="noopener noreferrer" data-i18n="codeLink">Código ↗</a>
                         </div>
                     </div>
                 </article>
             </div>
 
             <div class="all-projects reveal">
-                <a class="button button-secondary" href="https://github.com/aiirvizionz?tab=repositories" target="_blank" rel="noopener noreferrer">Ver todos los repositorios ↗</a>
+                <a class="button button-secondary" href="https://github.com/aiirvizionz?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="allRepositories">Ver todos los repositorios ↗</a>
             </div>
         </section>
 
         <section class="section-shell contact-section" id="contacto">
             <div class="contact-panel reveal">
-                <p class="section-index">05 / CONTACTO</p>
-                <h2>¿Construimos algo?</h2>
-                <p>
-                    Estoy interesado en seguir desarrollándome en proyectos de software, automatización e inteligencia artificial aplicada.
-                    Puedes conocer más de mi trabajo o contactarme desde estos enlaces.
+                <p class="section-index" data-i18n="contactIndex">05 / CONTACTO</p>
+                <h2 data-i18n="contactHeading">¿Construimos algo?</h2>
+                <p data-i18n="contactText">
+                    Estoy interesado en seguir desarrollándome en proyectos de software, automatización e inteligencia artificial aplicada. Puedes conocer más de mi trabajo o contactarme desde estos enlaces.
                 </p>
                 <div class="contact-links">
                     <a href="mailto:david.lopezhuerta01@gmail.com">Email ↗</a>
@@ -282,7 +547,7 @@
 
     <footer class="site-footer section-shell">
         <p><span>{</span> David Lopez · <span id="year"></span> <span>}</span></p>
-        <a href="#inicio">Volver arriba ↑</a>
+        <a href="#inicio" data-i18n="backToTop">Volver arriba ↑</a>
     </footer>
 
     <script src="index.js"></script>
