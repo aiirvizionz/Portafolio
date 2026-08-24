@@ -264,6 +264,15 @@ function applyTheme(theme, persist = true) {
         themeColorMeta.content = currentTheme === 'light' ? '#f4f4f1' : '#050505';
     }
 
+    if (themeToggle) {
+        const themeThumb = themeToggle.querySelector('.switch-thumb');
+        themeToggle.style.width = '58px';
+        if (themeThumb) {
+            themeThumb.style.width = '25px';
+            themeThumb.style.transform = currentTheme === 'light' ? 'translateX(0)' : 'translateX(27px)';
+        }
+    }
+
     if (persist) savePreference('portfolio-theme', currentTheme);
     refreshControlLabels();
 }
